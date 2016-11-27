@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var a = {
+			last: 'string',
+			name: {
+				hello:{ 0: 'string' }
+			},
+			forecast:{
+				condition:{ item: 1 }
+			},
+			number: 1
+		}
+		var item = 'item';
+		function search(a, item ,callback){
+  		for (var key in a){
+  			if(key == item){
+  				callback(key);
+  			}
+  			else if (typeof a[key] == 'object'){
+  				for (var k in a[key]){
+  					search(a[key],item,callback);
+  				}
+  			}
+  		}
+		}
+		function callback(obj){
+			console.log(obj);
+		}
+		search(a, item, callback);
+	</script>
+</body>
+</html>
